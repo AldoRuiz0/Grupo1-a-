@@ -1,0 +1,63 @@
+<div class="container">
+  <!-- Button activar modal agregar producto -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProductoModal">
+    Agregar empresa
+  </button>
+    <div class="row">
+      <div class="col-12 col-md-4" *ngFor="let emp of empresasModelGet">
+        <div class="card border-success mb-3">
+          <div class="card-header bg-transparent border-success">{{emp.nombre}}</div>
+          <div class="card-body text-success">
+            <p class="card-text">
+              la descripcion es: {{emp.descripcion}}
+              y la ubicacion es: {{emp.ubicacion}}
+            </p>
+          </div>
+          <div class="card-footer bg-transparent border-success">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <button type="button" class="btn btn-danger" (click)="deleteEmpresa(emp._id)">Eliminar</button>
+              <button type="button" class="btn btn-warning">Editar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal agregar producto-->
+  <div class="modal fade" id="agregarProductoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="mg-3">
+              <label for="inputNombre" class="form-label">nombre producto</label>
+              <input type="text" id="inputNombre" class="form-control"  name="nombre" #nombre="ngModel"
+              [(ngModel)]="empresasModelPost.nombre">
+            </div>
+            <div class="mg-3">
+              <label for="inputDescripcion" class="form-label">cantidad</label>
+              <input type="text" id="inputCantidad" class="form-control" name="descripcion" #descripcion="ngModel"
+              [(ngModel)]="empresasModelPost.descripcion">
+            </div>
+            <div class="mg-3">
+              <label for="inputPrecio" class="form-label">precio</label>
+              <input type="text" id="inputPrecio" class="form-control" name="ubicacion" #ubicacion="ngModel"
+              [(ngModel)]="empresasModelPost.ubicacion">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="postEmpresas()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>

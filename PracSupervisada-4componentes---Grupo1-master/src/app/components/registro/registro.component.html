@@ -1,0 +1,16 @@
+<h1> {{ titulo }} </h1>
+<ul *ngIf="validacion" >
+  <ng-container *ngFor="let pers of personas">
+    <li *ngIf="pers.edad >= 18">El nombre es: {{ pers.nombre }}
+      y tiene una edad: {{ pers.edad }}
+    </li>
+  </ng-container>
+  <!-- <li *ngFor="let pers of personas">
+    <ng-container *ngIf="pers.edad >= 18">
+      El nombre es: {{ pers.nombre }} y tiene una edad: {{ pers.edad }}
+    </ng-container>
+  </li> -->
+</ul>
+
+
+<button type="submit" (click)="validacion = !validacion" >Mostrar/ocultar</button>
